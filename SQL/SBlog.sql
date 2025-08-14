@@ -5,7 +5,7 @@ USE SBlog;
 
 CREATE TABLE `User` (
   `ID` INT PRIMARY KEY AUTO_INCREMENT,
-  `Fullname` VARCHAR(100),
+  `FullName` VARCHAR(100),
   `Username` VARCHAR(50),
   `HashedPassword` VARCHAR(255)
 );
@@ -36,7 +36,7 @@ ALTER TABLE `Comment` ADD FOREIGN KEY (`UserID`) REFERENCES `User` (`ID`);
 
 Use SBlog;
 
-INSERT INTO `User` (`Fullname`, `Username`, `HashedPassword`)
+INSERT INTO `User` (`FullName`, `Username`, `HashedPassword`)
 VALUES ('Huy Nguyen', 'huynguyen287123' , '123456'),
 	('Hung Nguyen', 'hung123' , '123456');
 
