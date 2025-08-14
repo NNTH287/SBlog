@@ -37,4 +37,13 @@ ALTER TABLE `Comment` ADD FOREIGN KEY (`UserID`) REFERENCES `User` (`ID`);
 Use SBlog;
 
 INSERT INTO `User` (`Fullname`, `Username`, `HashedPassword`)
-VALUES ('Huy Nguyen', 'huynguyen287123' , '123456');
+VALUES ('Huy Nguyen', 'huynguyen287123' , '123456'),
+	('Hung Nguyen', 'hung123' , '123456');
+
+INSERT INTO `Post` (`UserID`, `Title`, `Content`, `CreateDate`, `UpdateDate`)
+VALUES (1, 'My first post on SBlog', 'This is the first post of me on SBlog' , '2025-01-13 20:00:00', '2025-01-13 20:00:00'),
+	(1, 'Another post', 'Another post of me on SBlog' , '2025-01-25 20:00:00', '2025-01-25 20:00:00');
+
+INSERT INTO `Comment` (`PostID`, `UserID`, `Content`, `CreateDate`, `UpdateDate`)
+VALUES (1, 1, 'This is the first comment of me on SBlog' , '2025-01-13 20:05:00', '2025-01-13 20:05:00'),
+	(1, 2, 'Nice' , '2025-01-14 20:00:00', '2025-01-14 21:00:00');
