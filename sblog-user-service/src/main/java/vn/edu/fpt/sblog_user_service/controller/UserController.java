@@ -1,6 +1,7 @@
 package vn.edu.fpt.sblog_user_service.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.fpt.sblog_user_service.common.ApiResponse;
@@ -64,5 +65,11 @@ public class UserController {
         );
 
         return ResponseEntity.ok(apiResponse);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteUser(@PathVariable int id) {
+        userService.delete(id);
     }
 }
