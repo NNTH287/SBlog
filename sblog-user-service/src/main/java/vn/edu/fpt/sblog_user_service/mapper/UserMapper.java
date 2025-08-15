@@ -20,12 +20,9 @@ public class UserMapper {
         return user;
     }
 
-    public User UserUpdateRequestToUser(UserUpdateRequest userUpdateRequest) {
-        User user = new User();
+    public void updateEntity(User user, UserUpdateRequest userUpdateRequest) {
         user.setFullName(userUpdateRequest.fullName());
-        user.setUsername(userUpdateRequest.password());
-
-        return user;
+        user.setHashedPassword(userUpdateRequest.password());
     }
 
     public UserPublicInformation UserToUserPublicInformation(User user) {

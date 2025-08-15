@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import vn.edu.fpt.sblog_user_service.common.ApiResponse;
 import vn.edu.fpt.sblog_user_service.dto.UserPublicInformation;
 import vn.edu.fpt.sblog_user_service.dto.UserRegisterRequest;
+import vn.edu.fpt.sblog_user_service.dto.UserUpdateRequest;
 import vn.edu.fpt.sblog_user_service.service.UserService;
 
 import java.util.List;
@@ -47,6 +48,19 @@ public class UserController {
         UserPublicInformation userPublicInformation = userService.save(userRegisterRequest);
         ApiResponse<UserPublicInformation> apiResponse = new ApiResponse<>(
                 200,"User created", userPublicInformation
+        );
+
+        return ResponseEntity.ok(apiResponse);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<UserPublicInformation>> updateUser(
+            @PathVariable int id
+        ,@RequestBody UserUpdateRequest userUpdateRequest
+    ) {
+        UserPublicInformation userPublicInformation = userService.update(id, userUpdateRequest);
+        ApiResponse<UserPublicInformation> apiResponse = new ApiResponse<>(
+                200,"User updated", userPublicInformation
         );
 
         return ResponseEntity.ok(apiResponse);

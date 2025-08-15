@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import vn.edu.fpt.sblog_user_service.dto.UserAuthnInformation;
 import vn.edu.fpt.sblog_user_service.dto.UserPublicInformation;
 import vn.edu.fpt.sblog_user_service.dto.UserRegisterRequest;
+import vn.edu.fpt.sblog_user_service.dto.UserUpdateRequest;
 import vn.edu.fpt.sblog_user_service.entity.User;
 import vn.edu.fpt.sblog_user_service.mapper.UserMapper;
 import vn.edu.fpt.sblog_user_service.repository.UserRepository;
@@ -14,7 +15,7 @@ import java.util.List;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
     @Autowired
     public UserService(UserRepository userRepository, UserMapper userMapper) {
@@ -47,6 +48,15 @@ public class UserService {
 
     public UserPublicInformation save(UserRegisterRequest userRegisterRequest) {
         User user = userMapper.UserRegisterRequestToUser(userRegisterRequest);
+
+        return userMapper.UserToUserPublicInformation(userRepository.save(user));
+    }
+
+    public UserPublicInformation update(int id, UserUpdateRequest userUpdateRequest) {
+        User user = userRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("User with id=" + id + " not found"));
+
+        userMapper.updateEntity(user, userUpdateRequest);
 
         return userMapper.UserToUserPublicInformation(userRepository.save(user));
     }
