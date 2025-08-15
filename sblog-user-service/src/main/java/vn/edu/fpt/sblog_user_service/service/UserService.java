@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.edu.fpt.sblog_user_service.dto.UserAuthnInformation;
 import vn.edu.fpt.sblog_user_service.dto.UserPublicInformation;
+import vn.edu.fpt.sblog_user_service.dto.UserRegisterRequest;
 import vn.edu.fpt.sblog_user_service.entity.User;
 import vn.edu.fpt.sblog_user_service.mapper.UserMapper;
 import vn.edu.fpt.sblog_user_service.repository.UserRepository;
@@ -44,7 +45,9 @@ public class UserService {
         return userRepository.existsByUsername(username);
     }
 
-    public UserPublicInformation save(User user) {
+    public UserPublicInformation save(UserRegisterRequest userRegisterRequest) {
+        User user = userMapper.UserRegisterRequestToUser(userRegisterRequest);
+
         return userMapper.UserToUserPublicInformation(userRepository.save(user));
     }
 
