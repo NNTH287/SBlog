@@ -26,7 +26,7 @@ public class UserMapper {
     }
 
     public UserPublicInformation UserToUserPublicInformation(User user) {
-        return new UserPublicInformation(user.getId(), user.getUsername());
+        return new UserPublicInformation(user.getId(), user.getFullName());
     }
 
     public List<UserPublicInformation> UsersToUserPublicInformation(List<User> users) {
