@@ -72,4 +72,9 @@ public class UserController {
     public void deleteUser(@PathVariable int id) {
         userService.delete(id);
     }
+
+    @GetMapping("/login")
+    public void test() {
+        System.out.println("SUCCCCCCCCCCCCCCCCCCCCCCCCCC");
+    }
 }
