@@ -9,7 +9,7 @@ public class JwtUtil {
     private JwtUtil() {}
 
     //This secret key should be stored in other place such as encrypted Config Server or Secret Management System
-    private static final String SECRET = "yourSecretKey";
+    private static final String SECRET = "VHKJMNnbfhbsjkdbVJHVkhbJBKJBsmfnbngygiyguFYVHJbkjnjnsjdnlkfn";
 
     public static Claims extractClaims(String token) {
         return Jwts.parserBuilder().setSigningKey(SECRET).build().parseClaimsJws(token).getBody();
