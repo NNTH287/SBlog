@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.fpt.sblog_user_service.common.ApiResponse;
+import vn.edu.fpt.sblog_user_service.dto.UserCredential;
 import vn.edu.fpt.sblog_user_service.dto.UserPublicInformation;
 import vn.edu.fpt.sblog_user_service.dto.UserRegisterRequest;
 import vn.edu.fpt.sblog_user_service.dto.UserUpdateRequest;
@@ -40,6 +41,11 @@ public class UserController {
         );
 
         return ResponseEntity.ok(apiResponse);
+    }
+
+    @GetMapping("/credential-of/{username}")
+    public UserCredential getUserCredentialByUsername(@PathVariable String username) {
+        return userService.getUserCredentialByUsername(username);
     }
 
     @PostMapping

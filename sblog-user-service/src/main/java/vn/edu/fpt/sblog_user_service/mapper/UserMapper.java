@@ -1,7 +1,7 @@
 package vn.edu.fpt.sblog_user_service.mapper;
 
 import org.springframework.stereotype.Component;
-import vn.edu.fpt.sblog_user_service.dto.UserAuthnInformation;
+import vn.edu.fpt.sblog_user_service.dto.UserCredential;
 import vn.edu.fpt.sblog_user_service.dto.UserPublicInformation;
 import vn.edu.fpt.sblog_user_service.dto.UserRegisterRequest;
 import vn.edu.fpt.sblog_user_service.dto.UserUpdateRequest;
@@ -39,7 +39,7 @@ public class UserMapper {
         return userPublicInformation;
     }
 
-    public UserAuthnInformation UserToUserAuthnInformation(User user) {
-        return new UserAuthnInformation(user.getUsername(), user.getHashedPassword());
+    public UserCredential UserToUserCredential(User user) {
+        return new UserCredential(user.getUsername(), user.getHashedPassword());
     }
 }

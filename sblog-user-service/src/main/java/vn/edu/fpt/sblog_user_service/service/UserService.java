@@ -2,7 +2,7 @@ package vn.edu.fpt.sblog_user_service.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import vn.edu.fpt.sblog_user_service.dto.UserAuthnInformation;
+import vn.edu.fpt.sblog_user_service.dto.UserCredential;
 import vn.edu.fpt.sblog_user_service.dto.UserPublicInformation;
 import vn.edu.fpt.sblog_user_service.dto.UserRegisterRequest;
 import vn.edu.fpt.sblog_user_service.dto.UserUpdateRequest;
@@ -35,11 +35,11 @@ public class UserService {
         return userMapper.UserToUserPublicInformation(user);
     }
 
-    public UserAuthnInformation getUserAuthnInformationById(int id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(()->new RuntimeException("User with id=" + id + " not found"));
+    public UserCredential getUserCredentialByUsername(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(()->new RuntimeException("User with username=" + username + " not found"));
 
-        return userMapper.UserToUserAuthnInformation(user);
+        return userMapper.UserToUserCredential(user);
     }
 
     public boolean isExist(String username) {
