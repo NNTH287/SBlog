@@ -34,13 +34,8 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<UserPublicInformation>> getUserById(@PathVariable int id) {
-        UserPublicInformation userPublicInformation = userService.getUserById(id);
-        ApiResponse<UserPublicInformation> apiResponse = new ApiResponse<>(
-                200,"User info retrieved", userPublicInformation
-        );
-
-        return ResponseEntity.ok(apiResponse);
+    public UserPublicInformation getUserById(@PathVariable int id) {
+        return userService.getUserById(id);
     }
 
     @GetMapping("/credential-of/{username}")
