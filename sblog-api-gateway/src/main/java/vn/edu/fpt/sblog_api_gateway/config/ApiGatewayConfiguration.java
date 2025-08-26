@@ -17,6 +17,9 @@ public class ApiGatewayConfiguration {
                 .route(p -> p.path("/login")
                         .uri("lb://sblog-authentication-service")
                 )
+                .route(p -> p.path("/api/posts/**")
+                        .uri("lb://sblog-post-service")
+                )
                 .build();
     }
 }
